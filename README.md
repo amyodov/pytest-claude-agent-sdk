@@ -1,5 +1,9 @@
 # pytest-claude-agent-sdk
 
+[![PyPI version](https://badge.fury.io/py/pytest-claude-agent-sdk.svg)](https://pypi.org/project/pytest-claude-agent-sdk/)
+[![Python](https://img.shields.io/pypi/pyversions/pytest-claude-agent-sdk.svg)](https://pypi.org/project/pytest-claude-agent-sdk/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Pytest plugin for working with [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-python).
 
 Three complementary use cases:

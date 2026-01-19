@@ -16,7 +16,7 @@ description: Publish a new release to PyPI. Use when releasing, publishing to Py
 4. **Build and publish**:
    ```bash
    uv build
-   uv-publish
+   uv run uv-publish
    ```
 
 5. **Tag and push**:
@@ -27,5 +27,5 @@ description: Publish a new release to PyPI. Use when releasing, publishing to Py
 
 ## Notes
 
-- `uv-publish` reads credentials from `~/.pypirc`
-- For TestPyPI: `uv-publish --repository testpypi`
+- `uv run uv-publish` reads credentials from `~/.pypirc`
+- For TestPyPI: `uv run uv-publish --repository testpypi`
