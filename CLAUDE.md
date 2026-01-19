@@ -21,24 +21,14 @@ See README.md for installation, fixtures API, and usage examples.
 uv sync                    # Install dependencies
 uv run pytest              # Run all tests
 uv run pytest -m "not llm" # Skip LLM tests (fast)
-uv run ruff check .        # Lint
-uv run ruff format .       # Format
 ```
 
-## Pre-Commit Checklist
+## Available Skills
 
-Before committing, run:
+Skills in `.claude/skills/` — use them proactively:
 
-```bash
-uv run ruff check --fix && uv run ruff format
-uv run pytest -m "not llm" -v
-```
-
-For release commits, also run LLM tests:
-
-```bash
-uv run pytest -v
-```
+- **complete-checkpoint** — Run after completing significant work (lint, format, test). Don't report work as done until checks pass.
+- **bump-version** — Update version numbers for releases. Ensures both `pyproject.toml` and `__init__.py` stay in sync.
 
 ## Code Standards
 

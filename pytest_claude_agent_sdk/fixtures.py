@@ -12,10 +12,10 @@ All fixtures use Claude Code authentication automatically.
 from typing import AsyncIterator, Callable
 
 import pytest
-from claude_agent_sdk import Message, ResultMessage, query as sdk_query
+from claude_agent_sdk import Message
+from claude_agent_sdk import query as sdk_query
 
 from pytest_claude_agent_sdk.spy import SpyClaudeSDKClient
-
 
 #: Type alias for the query function signature.
 #: The actual SDK signature is: query(*, prompt: str, options: ClaudeAgentOptions | None, ...)

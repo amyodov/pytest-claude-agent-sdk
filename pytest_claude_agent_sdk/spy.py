@@ -3,7 +3,8 @@
 from dataclasses import dataclass, field
 from typing import Any, AsyncIterator, Optional
 
-from claude_agent_sdk import Message, ResultMessage, query as sdk_query
+from claude_agent_sdk import Message, ResultMessage
+from claude_agent_sdk import query as sdk_query
 
 
 @dataclass
@@ -136,9 +137,7 @@ class SpyClaudeSDKClient:
         Raises:
             AssertionError: If call count is not exactly 1.
         """
-        assert self.call_count == 1, (
-            f"Expected exactly one call, but {self.call_count} were made"
-        )
+        assert self.call_count == 1, f"Expected exactly one call, but {self.call_count} were made"
 
     def assert_call_count(self, expected: int) -> None:
         """Assert that exactly `expected` calls were made.
@@ -166,9 +165,7 @@ class SpyClaudeSDKClient:
             if substring in call.prompt:
                 return
         prompts = [call.prompt for call in self.calls]
-        raise AssertionError(
-            f"No call contained '{substring}'. Prompts were: {prompts}"
-        )
+        raise AssertionError(f"No call contained '{substring}'. Prompts were: {prompts}")
 
     def assert_last_call_contains(self, substring: str) -> None:
         """Assert that the last call's prompt contains the substring.
@@ -181,8 +178,7 @@ class SpyClaudeSDKClient:
         """
         assert self.last_call is not None, "No calls were made"
         assert substring in self.last_call.prompt, (
-            f"Last call prompt did not contain '{substring}'. "
-            f"Prompt was: {self.last_call.prompt}"
+            f"Last call prompt did not contain '{substring}'. Prompt was: {self.last_call.prompt}"
         )
 
     def reset_calls(self) -> None:

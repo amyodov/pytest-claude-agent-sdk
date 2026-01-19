@@ -34,9 +34,7 @@ class TestFixtureTypes:
 class TestSpyFunctionality:
     """Test spy functionality without making LLM calls."""
 
-    def test_spy_starts_with_no_calls(
-        self, claude_client: SpyClaudeSDKClient
-    ) -> None:
+    def test_spy_starts_with_no_calls(self, claude_client: SpyClaudeSDKClient) -> None:
         assert claude_client.call_count == 0
         assert claude_client.calls == []
         assert claude_client.last_call is None
@@ -46,9 +44,7 @@ class TestSpyFunctionality:
     ) -> None:
         claude_client.assert_not_called()
 
-    def test_assert_called_fails_when_no_calls(
-        self, claude_client: SpyClaudeSDKClient
-    ) -> None:
+    def test_assert_called_fails_when_no_calls(self, claude_client: SpyClaudeSDKClient) -> None:
         with pytest.raises(AssertionError, match="Expected at least one call"):
             claude_client.assert_called()
 
@@ -61,6 +57,7 @@ class TestSpyFunctionality:
     def test_reset_calls(self, claude_client: SpyClaudeSDKClient) -> None:
         # Manually add a fake call record for testing
         from pytest_claude_agent_sdk import CallRecord
+
         claude_client.calls.append(CallRecord(prompt="test"))
         assert claude_client.call_count == 1
 
@@ -89,9 +86,7 @@ class TestLLMCalls:
                 assert "HELLO" in msg.result.upper()
 
     @pytest.mark.asyncio
-    async def test_claude_client_records_calls(
-        self, claude_client: SpyClaudeSDKClient
-    ) -> None:
+    async def test_claude_client_records_calls(self, claude_client: SpyClaudeSDKClient) -> None:
         # Make a query
         async for msg in claude_client.query("Reply with exactly one word: WORLD"):
             if isinstance(msg, ResultMessage):
@@ -106,9 +101,7 @@ class TestLLMCalls:
         assert claude_client.last_call.response is not None
 
     @pytest.mark.asyncio
-    async def test_spy_assertion_helpers(
-        self, claude_client: SpyClaudeSDKClient
-    ) -> None:
+    async def test_spy_assertion_helpers(self, claude_client: SpyClaudeSDKClient) -> None:
         # Make a query
         async for _ in claude_client.query("What is the meaning of life?"):
             pass
@@ -121,9 +114,7 @@ class TestLLMCalls:
         claude_client.assert_last_call_contains("life")
 
     @pytest.mark.asyncio
-    async def test_claude_judge_client_works(
-        self, claude_judge_client: Callable
-    ) -> None:
+    async def test_claude_judge_client_works(self, claude_judge_client: Callable) -> None:
         async for msg in claude_judge_client(prompt="Is 2+2=4? Answer YES or NO only."):
             if isinstance(msg, ResultMessage):
                 assert msg.result is not None
