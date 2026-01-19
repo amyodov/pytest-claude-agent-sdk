@@ -12,7 +12,7 @@ Three complementary use cases:
 2. **Test apps using Claude Agent SDK** - use Claude as a smart test oracle (LLM-as-judge)
 3. **Both at once** - test your Claude-powered app with Claude-powered assertions
 
-Uses Claude Code authentication automatically - no API key management needed.
+Uses Claude Code authentication by default — see [Authentication](#authentication) for options.
 
 ## When to Use This Plugin
 
@@ -49,6 +49,26 @@ Or with uv:
 ```bash
 uv add pytest-claude-agent-sdk
 ```
+
+## Authentication
+
+The plugin uses [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-python) which supports several authentication methods:
+
+**Claude Code subscription (default):**
+If you have Claude Code installed and logged in (`claude` CLI), authentication is automatic — no configuration needed.
+
+**API key:**
+Set the `ANTHROPIC_API_KEY` environment variable. This uses pay-as-you-go API billing.
+
+```bash
+export ANTHROPIC_API_KEY=sk-ant-...
+```
+
+**Cloud providers:**
+- Amazon Bedrock: `CLAUDE_CODE_USE_BEDROCK=1`
+- Google Vertex AI: `CLAUDE_CODE_USE_VERTEX=1`
+
+See [Claude Agent SDK documentation](https://github.com/anthropics/claude-agent-sdk-python) for details.
 
 ## Fixtures
 
