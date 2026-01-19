@@ -1,6 +1,6 @@
 # pytest-claude-agent-sdk
 
-> Pytest plugin for testing applications built with Claude Agent SDK. Provides spy fixtures for recording and asserting on LLM calls, plus LLM-as-judge pattern support.
+> Use Claude Code in your pytests, or pytest your own Claude Code agents — or both.
 
 ## When to Use
 

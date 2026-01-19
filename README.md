@@ -4,13 +4,13 @@
 [![Python](https://img.shields.io/pypi/pyversions/pytest-claude-agent-sdk.svg)](https://pypi.org/project/pytest-claude-agent-sdk/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Pytest plugin for working with [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-python).
+**Use Claude Code in your pytests, or pytest your own Claude Code agents — or both.**
 
-Three complementary use cases:
+Three use cases:
 
-1. **Test apps that use Claude Agent SDK** - your app uses Claude internally, and you need to test it
-2. **Test apps using Claude Agent SDK** - use Claude as a smart test oracle (LLM-as-judge)
-3. **Both at once** - test your Claude-powered app with Claude-powered assertions
+1. **Test apps that use Claude Agent SDK** — your app calls Claude, verify it calls correctly
+2. **Test apps using Claude Agent SDK** — Claude judges your app's output
+3. **Both at once** — Claude-powered app, Claude-powered tests
 
 Uses Claude Code authentication by default — see [Authentication](#authentication) for options.
 

@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "pytest-claude-agent-sdk"
 version = "0.1.0"
-description = "Pytest plugin for testing with Claude Agent SDK"
+description = "Use Claude Code in your pytests, or pytest your own Claude Code agents — or both"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
