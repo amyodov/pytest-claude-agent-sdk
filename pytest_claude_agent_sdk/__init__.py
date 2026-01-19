@@ -24,7 +24,7 @@ Example:
 
 from pytest_claude_agent_sdk.spy import CallRecord, SpyClaudeSDKClient
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 __all__ = [
     "CallRecord",
