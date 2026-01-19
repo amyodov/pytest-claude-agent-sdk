@@ -1,4 +1,13 @@
-"""Pytest fixtures for Claude Agent SDK."""
+"""Pytest fixtures for Claude Agent SDK.
+
+This module provides three fixtures for testing with Claude:
+
+- claude_query: Raw query function for simple, stateless calls
+- claude_client: SpyClaudeSDKClient that records calls for inspection
+- claude_judge_client: Separate query function for LLM-as-judge evaluations
+
+All fixtures use Claude Code authentication automatically.
+"""
 
 from typing import AsyncIterator, Callable
 
@@ -8,9 +17,9 @@ from claude_agent_sdk import Message, ResultMessage, query as sdk_query
 from pytest_claude_agent_sdk.spy import SpyClaudeSDKClient
 
 
-# Type alias for the query function
-# The actual signature is: query(*, prompt: str, options: ClaudeAgentOptions | None, ...) -> AsyncIterator[Message]
-# Since Python's Callable can't express keyword-only args, we use ... for arguments
+#: Type alias for the query function signature.
+#: The actual SDK signature is: query(*, prompt: str, options: ClaudeAgentOptions | None, ...)
+#: Since Python's Callable can't express keyword-only args, we use ... for arguments.
 QueryFunc = Callable[..., AsyncIterator[Message]]
 
 

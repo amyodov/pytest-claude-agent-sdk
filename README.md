@@ -10,6 +10,30 @@ Three complementary use cases:
 
 Uses Claude Code authentication automatically - no API key management needed.
 
+## When to Use This Plugin
+
+**Your code accepts a client via dependency injection:**
+
+```python
+async def my_function(client: ClaudeSDKClient, data: str) -> str:
+    async for msg in client.query(f"Process: {data}"):
+        ...
+```
+
+→ Use `SpyClaudeSDKClient` from this plugin. It wraps real calls while recording them for assertions.
+
+**Your code calls `query()` directly (no DI):**
+
+```python
+from claude_agent_sdk import query
+
+async def my_function(data: str) -> str:
+    async for msg in query(prompt=f"Process: {data}"):  # hardcoded
+        ...
+```
+
+→ Use standard mocking (`unittest.mock.patch` or `pytest-mock`). This plugin won't help here — but that's a sign your code could benefit from dependency injection anyway.
+
 ## Installation
 
 ```bash

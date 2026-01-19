@@ -1,0 +1,37 @@
+# pytest-claude-agent-sdk
+
+> Pytest plugin for testing applications built with Claude Agent SDK. Provides spy fixtures for recording and asserting on LLM calls, plus LLM-as-judge pattern support.
+
+## When to Use
+
+Use this plugin when your code accepts a Claude client via dependency injection. The SpyClaudeSDKClient records all LLM calls while passing them through, enabling assertions on prompts and responses.
+
+If your code calls `query()` directly without dependency injection, use standard Python mocking instead.
+
+## Fixtures
+
+Three fixtures are registered automatically:
+
+- `claude_query`: Raw `query()` function for stateless LLM calls
+- `claude_client`: SpyClaudeSDKClient that records calls for inspection and assertions
+- `claude_judge_client`: Separate query function for LLM-as-judge evaluations
+
+## Types
+
+- `CallRecord`: Dataclass with `prompt`, `kwargs`, `response`, and `result` property
+- `SpyClaudeSDKClient`: Spy wrapper with `query()`, call tracking, and assertion helpers
+
+## Assertion Helpers
+
+SpyClaudeSDKClient provides: `assert_called()`, `assert_not_called()`, `assert_called_once()`, `assert_call_count(n)`, `assert_any_call_contains(substring)`, `assert_last_call_contains(substring)`, `reset_calls()`
+
+## Marker
+
+Use `@pytest.mark.llm` to tag tests that make LLM calls. Run with `pytest -m llm` or skip with `pytest -m "not llm"`.
+
+## Docs
+
+- [README](https://github.com/amyodov/pytest-claude-agent-sdk/blob/main/README.md): Full documentation with examples
+- [spy.py](https://github.com/amyodov/pytest-claude-agent-sdk/blob/main/pytest_claude_agent_sdk/spy.py): CallRecord and SpyClaudeSDKClient implementation
+- [fixtures.py](https://github.com/amyodov/pytest-claude-agent-sdk/blob/main/pytest_claude_agent_sdk/fixtures.py): Pytest fixture definitions
+- [plugin.py](https://github.com/amyodov/pytest-claude-agent-sdk/blob/main/pytest_claude_agent_sdk/plugin.py): Pytest plugin entry point
