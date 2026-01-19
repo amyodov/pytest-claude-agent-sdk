@@ -30,6 +30,11 @@ dependencies = [
     "claude-agent-sdk",
 ]
 
+[project.urls]
+Homepage = "https://github.com/amyodov/pytest-claude-agent-sdk"
+Repository = "https://github.com/amyodov/pytest-claude-agent-sdk"
+Issues = "https://github.com/amyodov/pytest-claude-agent-sdk/issues"
+
 [project.entry-points.pytest11]
 claude_agent_sdk = "pytest_claude_agent_sdk.plugin"
 
@@ -37,6 +42,7 @@ claude_agent_sdk = "pytest_claude_agent_sdk.plugin"
 dev = [
     "ruff",
     "mypy",
+    "uv-publish",
 ]
 
 [tool.hatch.build.targets.wheel]

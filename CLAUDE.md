@@ -29,6 +29,7 @@ Skills in `.claude/skills/` — use them proactively:
 
 - **complete-checkpoint** — Run after completing significant work (lint, format, test). Don't report work as done until checks pass.
 - **bump-version** — Update version numbers for releases. Ensures both `pyproject.toml` and `__init__.py` stay in sync.
+- **publish-pypi** — Publish a new release to PyPI. Coordinates version bump, checks, build, publish, and tagging.
 
 ## Code Standards
 

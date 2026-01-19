@@ -40,6 +40,12 @@ async def my_function(data: str) -> str:
 pip install pytest-claude-agent-sdk
 ```
 
+Or with uv:
+
+```bash
+uv add pytest-claude-agent-sdk
+```
+
 ## Fixtures
 
 | Fixture               | Type                 | Purpose                                             |
