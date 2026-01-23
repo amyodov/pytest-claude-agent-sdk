@@ -16,13 +16,13 @@ uv run ruff check --fix && uv run ruff format
 ## 2. Run Tests
 
 ```bash
-uv run pytest -m "not llm" -v
+uv run pytest -v
 ```
 
 ## One-Liner
 
 ```bash
-uv run ruff check --fix && uv run ruff format && uv run pytest -m "not llm" -v
+uv run ruff check --fix && uv run ruff format && uv run pytest -v
 ```
 
 ## Behavior
