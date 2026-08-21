@@ -1,4 +1,32 @@
 {
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "pytest-claude-agent-sdk",
+  "description": "Use Claude Code in your pytests, or pytest your own Claude Code agents — or both",
   "url": "https://context7.com/amyodov/pytest-claude-agent-sdk",
-  "public_key": "pk_oqKTKO3hmjBG756m5kers"
+  "public_key": "pk_oqKTKO3hmjBG756m5kers",
+  "branch": "main",
+  "folders": [],
+  "excludeFolders": [
+    ".claude",
+    ".serena",
+    "dist",
+    "tests"
+  ],
+  "excludeFiles": [
+    "CLAUDE.md",
+    "CLAUDE.local.md"
+  ],
+  "rules": [
+    "Use the claude_client fixture (a SpyClaudeSDKClient) only when the code under test accepts a Claude client via dependency injection; if it calls claude_agent_sdk.query() directly, use unittest.mock.patch or pytest-mock instead.",
+    "Three fixtures are registered automatically: claude_query (raw query function), claude_client (recording spy for the app under test), claude_judge_client (separate query function for LLM-as-judge assertions).",
+    "Keep the app under test and the test oracle apart: drive the app with claude_client and grade its output with claude_judge_client.",
+    "Every fixture call is an async generator: combine @pytest.mark.asyncio with `async for msg in ...`, and read the final text from the ResultMessage via msg.result.",
+    "SpyClaudeSDKClient needs no connect()/disconnect() — each query() call opens its own connection, passes the call through to the real LLM, and records it.",
+    "Assert on recorded calls with assert_called(), assert_not_called(), assert_called_once(), assert_call_count(n), assert_any_call_contains(text), assert_last_call_contains(text), and reset_calls().",
+    "Inspect recorded calls directly through claude_client.calls (list of CallRecord), claude_client.call_count and claude_client.last_call; each CallRecord exposes prompt, kwargs, response and the result shortcut.",
+    "Pass ClaudeAgentOptions as the options keyword argument, e.g. claude_client.query(prompt, options=ClaudeAgentOptions(max_turns=1)); it is stored in CallRecord.kwargs for assertions.",
+    "Mark every test that makes a real LLM call with @pytest.mark.llm so CI can run `pytest -m 'not llm'` for a fast pass and `pytest -m llm` for the costly one.",
+    "Real LLM responses vary between runs, so ask for deterministic, checkable output (e.g. \"Answer only YES or NO\") and assert on that rather than on exact wording.",
+    "Authentication uses the logged-in Claude Code CLI by default; set ANTHROPIC_API_KEY for pay-as-you-go API billing, or CLAUDE_CODE_USE_BEDROCK=1 / CLAUDE_CODE_USE_VERTEX=1 for cloud providers."
+  ]
 }
